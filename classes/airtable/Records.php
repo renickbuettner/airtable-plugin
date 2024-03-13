@@ -39,6 +39,11 @@ class Records
         return $first ? array_keys($first->getFields()) : [];
     }
 
+    public function getCount(): int
+    {
+        return count($this->records);
+    }
+
     /**
      * @return array[]
      */

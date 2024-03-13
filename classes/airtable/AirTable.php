@@ -37,7 +37,7 @@ class AirTable extends Client
         if (isset($res['offset'])) {
             $next = $this->get("{$this->selectedDatabaseId}/{$options->tableId}", array_merge($options->toQueryParams(), ['offset' => $res['offset']]))->json();
             $res['records'] = array_merge($res['records'], $next['records']);
-            $res['offset'] = $next['offset'];
+            $res['offset'] = $next['offset'] ?? null;
         }
 
         return Records::fromJson($res);

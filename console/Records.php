@@ -36,7 +36,6 @@ class Records extends Command
             AsyncAirTable::instance() :
             AirTable::instance();
 
-
         $tableId = $this->argument('tableId');
         $records = $airtable->getRecords(
             new RecordQueryParams($tableId)

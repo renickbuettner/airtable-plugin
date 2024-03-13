@@ -1,5 +1,8 @@
 <?php namespace Renick\AirTable;
 
+use Exception;
+use Renick\AirTable\Classes\AirTable\AsyncAirTable;
+use Renick\AirTable\Console\Backup;
 use Renick\AirTable\Console\Tables;
 use Renick\AirTable\Console\Records;
 use System\Classes\PluginBase;
@@ -12,17 +15,16 @@ use System\Classes\PluginBase;
 class Plugin extends PluginBase
 {
 
-
     /**
      * pluginDetails about this plugin.
      */
-    public function pluginDetails()
+    public function pluginDetails(): array
     {
         return [
             'name' => 'renick.airtable::lang.plugin.name',
             'description' => 'renick.airtable::lang.plugin.description',
             'author' => 'Renick Büttner',
-            'icon' => 'icon-bug'
+            'icon' => 'icon-database'
         ];
     }
 
@@ -32,12 +34,31 @@ class Plugin extends PluginBase
     }
 
 
-    public function boot()
+    public function boot(): void
     {
         parent::boot();
 
         $this->registerConsoleCommand('airtable.tables', Tables::class);
         $this->registerConsoleCommand('airtable.records', Records::class);
+        $this->registerConsoleCommand('airtable.backup', Backup::class);
+    }
+
+    public function registerComponents(): array
+    {
+        return [
+            \Renick\AirTable\Components\Tables::class => 'airTables',
+            \Renick\AirTable\Components\Records::class => 'airRecords'
+        ];
+    }
+
+    private static AsyncAirTable $asyncInstance;
+
+    /**
+     * @throws Exception
+     */
+    public static function asyncInstance(): AsyncAirTable
+    {
+        return self::$asyncInstance ??= AsyncAirTable::instance(null, null);
     }
 
 }
