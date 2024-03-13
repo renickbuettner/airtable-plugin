@@ -3,8 +3,8 @@
 Just a simple OctoberCMS plugin for integration AirTable into OctoberCMS.
 
 - [x] AirTable SDK for OctoberCMS with authentication
-- [ ] CMS Components for interacting with AirTable databases
-- [ ] Caching options for AirTable requests
+- [x] CMS Components for interacting with AirTable databases
+- [x] Caching options for AirTable requests
 
 
 
