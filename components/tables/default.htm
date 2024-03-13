@@ -1,0 +1,14 @@
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tbody>
+        {% for table in __SELF__.tables %}
+            <tr>
+                <td><b>{{ table.getName() }}</b></td>
+                <td><b>{{ table.getId() }}</b></td>
+                <td>{{ table.getDescription() }}</td>
+                <td>{{ table.getFieldById(table.primaryFieldId).getName() }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

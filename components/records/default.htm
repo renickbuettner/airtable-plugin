@@ -1,0 +1,23 @@
+{% set records = __SELF__.records %}
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            {% for fieldName in records.getFieldNames() %}
+                <th>{{ fieldName }}</th>
+            {% endfor %}
+        </thead>
+
+        <tbody>
+            {% for record in records.toArray() %}
+                {% if record|length > 0 %}
+                    <tr>
+                        {% for column in record %}
+                            <td>{{ column }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
