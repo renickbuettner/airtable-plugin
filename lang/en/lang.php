@@ -45,6 +45,10 @@ return [
                 'title' => 'Limit',
                 'description' => 'Die Anzahl der Datensätze, die abgerufen werden sollen. Standard ist -1 (alle Datensätze).',
             ],
+            'view' => [
+                'title' => 'View',
+                'description' => 'The ID of a view in the AirTable database.',
+            ],
             'sort' => [
                 'title' => 'Sort',
                 'description' => 'Optional sorting of entries e.g. fieldName:asc or fieldName:desc',
