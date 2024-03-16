@@ -31,7 +31,10 @@ class AirTable extends Client
         $res = $this->get("{$this->selectedDatabaseId}/{$options->tableId}", $queryParams)->json();
 
         if (isset($res['error'])) {
-            $this->onError("{$res['error']['type']} {$res['error']['message']}");
+            $error = is_string($res['error']) ?
+                $res['error'] :
+                ($res['error']['type'] ?? '' . ' ' . $res['error']['message'] ?? '');
+            $this->onError($error);
         }
 
         while (isset($res['offset'])) {
