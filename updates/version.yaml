@@ -1,1 +1,2 @@
 v1.0.0: Simple AirTable integration with basic features
+v1.0.1: Added bugfix for retrieving all records by iterating through offsets

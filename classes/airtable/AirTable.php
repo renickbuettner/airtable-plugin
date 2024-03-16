@@ -34,7 +34,7 @@ class AirTable extends Client
             $this->onError("{$res['error']['type']} {$res['error']['message']}");
         }
 
-        if (isset($res['offset'])) {
+        while (isset($res['offset'])) {
             $next = $this->get("{$this->selectedDatabaseId}/{$options->tableId}", array_merge($options->toQueryParams(), ['offset' => $res['offset']]))->json();
             $res['records'] = array_merge($res['records'], $next['records']);
             $res['offset'] = $next['offset'] ?? null;
