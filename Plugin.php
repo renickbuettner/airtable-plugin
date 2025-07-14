@@ -36,8 +36,6 @@ class Plugin extends PluginBase
 
     public function boot(): void
     {
-        parent::boot();
-
         $this->registerConsoleCommand('airtable.tables', Tables::class);
         $this->registerConsoleCommand('airtable.records', Records::class);
         $this->registerConsoleCommand('airtable.backup', Backup::class);
